@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "kolibri/woningen-grid",
+	"version": "1.1.0",
+	"title": "Woningen Grid",
+	"category": "widgets",
+	"icon": "building",
+	"description": "Toont een grid van woningen. Kies de laatste woningen of selecteer individuele woningen.",
+	"textdomain": "kolibri-woningen",
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"]
+	},
+	"attributes": {
+		"mode": {
+			"type": "string",
+			"default": "latest"
+		},
+		"count": {
+			"type": "number",
+			"default": 4
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"selectedIds": {
+			"type": "array",
+			"items": { "type": "number" },
+			"default": []
+		},
+		"title": {
+			"type": "string",
+			"default": "Premium Listings"
+		},
+		"eyebrow": {
+			"type": "string",
+			"default": "Selected Collection"
+		},
+		"browseText": {
+			"type": "string",
+			"default": "Browse All Properties"
+		},
+		"browseUrl": {
+			"type": "string",
+			"default": "/properties/"
+		}
+	},
+	"render": "file:./render.php",
+	"style": "file:../../assets/css/frontend.css"
+}

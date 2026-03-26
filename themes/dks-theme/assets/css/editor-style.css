@@ -1,0 +1,512 @@
+/*
+ * editor-style.css
+ *
+ * Gutenberg editor stijlen:
+ *   - Witte editor-achtergrond (geen grijs)
+ *   - Content breedte beperkt tot 760px voor tekst, 1280px voor wide/full
+ *   - DKS blokken verkleind zodat ze hanteerbaar zijn in de editor
+ *
+ * @package DKS_Theme
+ * @since   1.0.1
+ */
+
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;700;900&family=Montserrat:wght@500;700&display=swap');
+
+/* ── Design tokens ───────────────────────────────────────────────────────── */
+:root {
+	--dks-color-primary:  #1A1A1A;
+	--dks-color-accent:   #ef5225;
+	--dks-color-hover:    #02a99c;
+	--dks-color-bg-light: #F9F9F7;
+	--dks-font-display:   'Gabarito', sans-serif;
+	--dks-font-logo:      'Montserrat', sans-serif;
+
+	/* Editor content widths */
+	--dks-editor-text:    760px;
+	--dks-editor-wide:    1200px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   1. EDITOR CANVAS — wit, niet grijs
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.block-editor-writing-flow,
+.block-editor-block-list__layout.is-root-container,
+.editor-styles-wrapper {
+	background-color: #ffffff !important;
+}
+
+.editor-styles-wrapper {
+	font-family: var(--dks-font-display);
+	color: var(--dks-color-primary);
+	-webkit-font-smoothing: antialiased;
+	padding: 0 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   2. CONTENT BREEDTE
+   Normale blokken: 760px. Wide: 1200px. Full: geen begrenzing.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editor-styles-wrapper .wp-block {
+	max-width: var(--dks-editor-text);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.editor-styles-wrapper .wp-block[data-align="wide"],
+.editor-styles-wrapper .alignwide {
+	max-width: var(--dks-editor-wide);
+}
+
+.editor-styles-wrapper .wp-block[data-align="full"],
+.editor-styles-wrapper .alignfull {
+	max-width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* DKS full-width blokken */
+.editor-styles-wrapper .wp-block-dks-hero,
+.editor-styles-wrapper .wp-block-dks-features {
+	max-width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* DKS sectie-blokken: breed maar niet full */
+.editor-styles-wrapper .wp-block-dks-listings,
+.editor-styles-wrapper .wp-block-dks-newsletter {
+	max-width: var(--dks-editor-wide);
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   3. TYPOGRAFIE
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+	font-family: var(--dks-font-display);
+	font-weight: 800;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	color: var(--dks-color-primary);
+}
+
+.editor-styles-wrapper p {
+	font-size: 1.0625rem;
+	line-height: 1.8;
+	color: rgba(26, 26, 26, 0.75);
+	max-width: 70ch;
+}
+
+.editor-styles-wrapper a {
+	color: var(--dks-color-accent);
+}
+
+.block-editor-default-block-appender__content {
+	font-family: var(--dks-font-display) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   4. DKS HERO — compact in de editor
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editor-styles-wrapper .dks-hero {
+	position: relative;
+	min-height: 280px !important;
+	display: flex;
+	align-items: center;
+	background-color: var(--dks-color-primary);
+	overflow: hidden;
+}
+
+.editor-styles-wrapper .dks-hero__bg {
+	position: absolute;
+	inset: 0;
+	background-size: cover;
+	background-position: center;
+}
+
+.editor-styles-wrapper .dks-hero__overlay {
+	position: absolute;
+	inset: 0;
+}
+
+.editor-styles-wrapper .dks-hero__content {
+	position: relative;
+	z-index: 2;
+	padding: 2rem 2.5rem;
+}
+
+.editor-styles-wrapper .dks-hero__heading {
+	color: #ffffff;
+	font-size: 2rem !important;
+	text-transform: uppercase;
+	line-height: 1;
+	margin-bottom: 0.6rem;
+}
+
+.editor-styles-wrapper .dks-hero__heading .accent {
+	color: var(--dks-color-accent);
+}
+
+.editor-styles-wrapper .dks-hero__subheading {
+	color: rgba(255, 255, 255, 0.75);
+	font-size: 0.875rem !important;
+	margin-bottom: 1rem;
+}
+
+.editor-styles-wrapper .dks-hero__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+
+.editor-styles-wrapper .dks-btn {
+	padding: 0.55rem 1.25rem !important;
+	font-size: 0.6rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   5. DKS LISTINGS — compacte kaarten, aspect-ratio breder dan diep
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editor-styles-wrapper .dks-listings {
+	padding-block: 2rem !important;
+}
+
+.editor-styles-wrapper .dks-listings .dks-container {
+	padding-block: 0 !important;
+}
+
+.editor-styles-wrapper .dks-listings__title {
+	font-size: 1.75rem !important;
+	text-transform: uppercase;
+	letter-spacing: -0.03em;
+	line-height: 1;
+}
+
+.editor-styles-wrapper .dks-listings__eyebrow {
+	color: var(--dks-color-accent);
+	font-size: 0.6rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.4em;
+}
+
+.editor-styles-wrapper .dks-listings__header {
+	margin-bottom: 1.25rem !important;
+}
+
+.editor-styles-wrapper .dks-listings__grid {
+	gap: 1rem !important;
+}
+
+/* Landschap ipv portretformat — bespaart veel verticale ruimte */
+.editor-styles-wrapper .dks-property-card__image-wrap {
+	aspect-ratio: 16 / 9 !important;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 0.6rem;
+	display: block;
+}
+
+.editor-styles-wrapper .dks-property-card__image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	filter: none !important; /* Geen grayscale in editor */
+}
+
+.editor-styles-wrapper .dks-property-card__price {
+	font-size: 1rem !important;
+	font-weight: 700;
+	margin-bottom: 0.15rem;
+}
+
+.editor-styles-wrapper .dks-property-card__location {
+	font-size: 0.55rem;
+	margin-bottom: 0.35rem;
+}
+
+.editor-styles-wrapper .dks-property-card__meta {
+	gap: 0.75rem !important;
+}
+
+.editor-styles-wrapper .dks-property-card__meta-item {
+	font-size: 0.55rem;
+}
+
+.editor-styles-wrapper .dks-property-card__badge {
+	font-size: 0.5rem;
+	padding: 0.25rem 0.5rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   6. DKS FEATURES — minder hoog
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editor-styles-wrapper .dks-features {
+	background-color: var(--dks-color-primary);
+}
+
+.editor-styles-wrapper .dks-features .dks-container {
+	padding-block: 2rem !important;
+}
+
+.editor-styles-wrapper .dks-features__title {
+	font-size: 1.75rem !important;
+	color: #ffffff;
+	margin-bottom: 0.5rem;
+}
+
+.editor-styles-wrapper .dks-features__title .accent {
+	color: var(--dks-color-accent);
+}
+
+.editor-styles-wrapper .dks-features__eyebrow {
+	color: var(--dks-color-accent);
+	font-size: 0.6rem;
+	margin-bottom: 0.4rem;
+}
+
+.editor-styles-wrapper .dks-features__intro {
+	font-size: 0.875rem !important;
+	margin-bottom: 1.25rem !important;
+}
+
+.editor-styles-wrapper .dks-features__grid {
+	gap: 0.75rem !important;
+}
+
+.editor-styles-wrapper .dks-feature-item {
+	padding: 1rem 0.75rem !important;
+}
+
+.editor-styles-wrapper .dks-feature-item__icon {
+	width: auto !important;
+	height: auto !important;
+	background: none !important;
+	border: none !important;
+	margin-bottom: 0.75rem !important;
+}
+
+.editor-styles-wrapper .dks-feature-item__icon svg {
+	width: 2rem !important;
+	height: 2rem !important;
+	color: var(--dks-color-accent) !important;
+}
+
+.editor-styles-wrapper .dks-feature-item__title {
+	font-size: 0.6rem;
+	margin-bottom: 0.3rem;
+}
+
+.editor-styles-wrapper .dks-feature-item__desc {
+	font-size: 0.75rem;
+	line-height: 1.5;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   7. DKS NEWSLETTER — compact
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editor-styles-wrapper .dks-newsletter {
+	padding-block: 2rem !important;
+}
+
+.editor-styles-wrapper .dks-newsletter__inner {
+	padding: 2rem !important;
+}
+
+.editor-styles-wrapper .dks-newsletter__heading {
+	font-size: 1.5rem !important;
+	margin-bottom: 0.4rem;
+}
+
+.editor-styles-wrapper .dks-newsletter__heading .accent {
+	color: var(--dks-color-accent);
+}
+
+.editor-styles-wrapper .dks-newsletter__text {
+	font-size: 0.875rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   8. POST CARD
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editor-styles-wrapper .dks-post-card__title a {
+	color: var(--dks-color-primary);
+	text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   9. SVG ICONEN BEGRENZEN — voorkomt enorme pijlen en iconen in de editor
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* Alle SVG's in de editor een harde max-afmeting geven */
+.editor-styles-wrapper svg {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+/* "Browse All Properties" pijl */
+.editor-styles-wrapper .dks-listings__browse svg {
+	width: 14px !important;
+	height: 14px !important;
+	flex-shrink: 0;
+}
+
+/* Locatie-pin in property card */
+.editor-styles-wrapper .dks-property-card__location svg {
+	width: 14px !important;
+	height: 14px !important;
+	flex-shrink: 0;
+}
+
+/* Bed / bath / sqm iconen in property card */
+.editor-styles-wrapper .dks-property-card__meta-item svg {
+	width: 14px !important;
+	height: 14px !important;
+	flex-shrink: 0;
+}
+
+/* Footer contact iconen */
+.editor-styles-wrapper .site-footer__contact-list svg {
+	width: 18px !important;
+	height: 18px !important;
+}
+
+/* "Read More" pijl in post cards */
+.editor-styles-wrapper .dks-post-card__read-more svg {
+	width: 14px !important;
+	height: 14px !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   10. LANDINGSPAGINA BLOKKEN — compact in de editor
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* All new section blocks: reduce vertical padding in editor */
+.editor-styles-wrapper .dks-text-image,
+.editor-styles-wrapper .dks-steps,
+.editor-styles-wrapper .dks-testimonials,
+.editor-styles-wrapper .dks-logos,
+.editor-styles-wrapper .dks-process,
+.editor-styles-wrapper .dks-cta,
+.editor-styles-wrapper .dks-bonus,
+.editor-styles-wrapper .dks-faq {
+	padding-block: 2rem !important;
+}
+
+/* Text + Image */
+.editor-styles-wrapper .dks-text-image__img,
+.editor-styles-wrapper .dks-text-image__img-placeholder {
+	aspect-ratio: 16 / 9 !important;
+}
+
+/* CTA block variants readable in editor */
+.editor-styles-wrapper .dks-cta--dark  { background: var(--dks-color-primary) !important; }
+.editor-styles-wrapper .dks-cta--accent { background: var(--dks-color-accent) !important; }
+
+/* Process: tighter step spacing */
+.editor-styles-wrapper .dks-process-step__body {
+	padding-bottom: 1.5rem !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   11. KOLIBRI WONINGEN BLOKKEN — editor placeholders
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.editor-styles-wrapper .kolibri-block-editor-placeholder {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	min-height: 120px;
+	padding: 2rem;
+	background-color: #f9f9f7;
+	border: 2px dashed rgba(184, 92, 56, 0.35);
+	border-radius: 4px;
+	text-align: center;
+	font-family: var(--dks-font-display);
+}
+
+.editor-styles-wrapper .kolibri-block-editor-placeholder .dashicons {
+	color: var(--dks-color-accent);
+	font-size: 2rem;
+	width: 2rem;
+	height: 2rem;
+}
+
+.editor-styles-wrapper .kolibri-block-editor-placeholder p {
+	margin: 0;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	color: var(--dks-color-primary);
+	max-width: none;
+}
+
+/* Kolibri post picker UI in Inspector */
+.kolibri-post-picker {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.kolibri-selected-posts {
+	background: #f0f0f0;
+	border-radius: 4px;
+	padding: 8px;
+	margin-bottom: 4px;
+}
+
+.kolibri-selected-item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 4px 0;
+	font-size: 12px;
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.kolibri-selected-item:last-child {
+	border-bottom: none;
+}
+
+.kolibri-remove-btn {
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: #cc1818;
+	padding: 0 4px;
+	font-size: 14px;
+	line-height: 1;
+}
+
+.kolibri-search-results {
+	max-height: 200px;
+	overflow-y: auto;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 4px;
+}
+
+.kolibri-search-results .components-checkbox-control {
+	padding: 4px 8px;
+	border-radius: 2px;
+}
+
+.kolibri-search-results .components-checkbox-control:hover {
+	background: #f0f0f0;
+}

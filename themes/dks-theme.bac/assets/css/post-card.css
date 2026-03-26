@@ -1,0 +1,184 @@
+/*
+ * Post card styles — appended conceptually to style.css.
+ * In practice these are part of style.css; kept separate here
+ * for readability. Merge into style.css if desired.
+ *
+ * @package DKS_Theme
+ */
+
+/* ── Post Card (blog loop) ────────────────────────────────────────────────── */
+.dks-post-card {
+	display: flex;
+	flex-direction: column;
+	background: var(--dks-color-white);
+	border: 1px solid rgba(26, 26, 26, 0.06);
+	transition: var(--dks-transition);
+}
+
+.dks-post-card:hover {
+	box-shadow: 0 8px 40px rgba(26, 26, 26, 0.08);
+	transform: translateY(-2px);
+}
+
+.dks-post-card__thumb {
+	display: block;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+}
+
+.dks-post-card__img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.6s ease;
+}
+
+.dks-post-card:hover .dks-post-card__img {
+	transform: scale(1.04);
+}
+
+.dks-post-card__body {
+	padding: 1.5rem 1.75rem 2rem;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+.dks-post-card__cats {
+	display: flex;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	margin-bottom: 0.75rem;
+}
+
+.dks-post-card__cat {
+	font-size: 0.55rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	color: var(--dks-color-accent);
+	border: 1px solid var(--dks-color-accent);
+	padding: 0.2rem 0.6rem;
+	transition: var(--dks-transition);
+}
+
+.dks-post-card__cat:hover {
+	background: var(--dks-color-accent);
+	color: var(--dks-color-white);
+}
+
+.dks-post-card__title {
+	font-size: clamp(1rem, 2vw, 1.4rem);
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	margin-bottom: 0.5rem;
+}
+
+.dks-post-card__title a {
+	color: var(--dks-color-primary);
+	transition: var(--dks-transition);
+}
+
+.dks-post-card__title a:hover {
+	color: var(--dks-color-accent);
+}
+
+.dks-post-card__meta {
+	font-size: 0.6rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.12em;
+	color: rgba(26, 26, 26, 0.4);
+	margin-bottom: 1rem;
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.dks-post-card__excerpt {
+	font-size: 0.9rem;
+	color: rgba(26, 26, 26, 0.65);
+	line-height: 1.7;
+	flex: 1;
+	margin-bottom: 1.25rem;
+}
+
+.dks-post-card__read-more {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 0.6rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	color: var(--dks-color-primary);
+	margin-top: auto;
+	transition: var(--dks-transition);
+}
+
+.dks-post-card__read-more svg {
+	width: 14px;
+	height: 14px;
+	transition: transform 0.3s ease;
+}
+
+.dks-post-card__read-more:hover {
+	color: var(--dks-color-accent);
+}
+
+.dks-post-card__read-more:hover svg {
+	transform: translateX(4px);
+}
+
+/* ── Pagination ───────────────────────────────────────────────────────────── */
+.navigation.pagination {
+	margin-top: 3rem;
+}
+
+.navigation .nav-links {
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+}
+
+.navigation .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.5rem;
+	height: 2.5rem;
+	font-size: 0.65rem;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	border: 1px solid rgba(26, 26, 26, 0.1);
+	color: rgba(26, 26, 26, 0.5);
+	transition: var(--dks-transition);
+}
+
+.navigation .page-numbers:hover,
+.navigation .page-numbers.current {
+	background-color: var(--dks-color-primary);
+	color: var(--dks-color-white);
+	border-color: var(--dks-color-primary);
+}
+
+/* ── Breadcrumbs ──────────────────────────────────────────────────────────── */
+.dks-breadcrumbs {
+	font-size: 0.65rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.15em;
+	color: rgba(26, 26, 26, 0.45);
+	margin-bottom: 1.5rem;
+}
+
+.dks-breadcrumbs a {
+	color: rgba(26, 26, 26, 0.45);
+	transition: var(--dks-transition);
+}
+
+.dks-breadcrumbs a:hover {
+	color: var(--dks-color-accent);
+}

@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "kolibri/woningen-zoekformulier",
+	"version": "1.0.0",
+	"title": "Woningen Zoekformulier",
+	"category": "widgets",
+	"icon": "search",
+	"description": "Zoekformulier met dynamische filters en AJAX-resultaten.",
+	"textdomain": "kolibri-woningen",
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"]
+	},
+	"attributes": {
+		"perPage": {
+			"type": "number",
+			"default": 12
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"showFilter": {
+			"type": "boolean",
+			"default": true
+		}
+	},
+	"render": "file:./render.php",
+	"style": "file:../../assets/css/frontend.css"
+}

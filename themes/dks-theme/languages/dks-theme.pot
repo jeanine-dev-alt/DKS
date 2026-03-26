@@ -1,0 +1,407 @@
+# Copyright (C) 2024 DKS Real Estate
+# This file is distributed under the GNU General Public License v2 or later.
+# Generated with WP-CLI `wp i18n make-pot`
+msgid ""
+msgstr ""
+"Project-Id-Version: DKS Real Estate 1.0.0\n"
+"Report-Msgid-Bugs-To: https://dksrealestate.nl\n"
+"POT-Creation-Date: 2024-01-01T00:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"X-Domain: dks-theme\n"
+
+#. Theme Name of the theme
+msgid "DKS Real Estate"
+msgstr ""
+
+#. Theme URI of the theme
+msgid "https://dksrealestate.nl"
+msgstr ""
+
+#. Description of the theme
+msgid "Premium real estate WordPress theme for DKS. Fully block-editor compatible, supports child themes, multilingual-ready via translation domain."
+msgstr ""
+
+#. Author of the theme
+msgid "DKS Real Estate"
+msgstr ""
+
+#: header.php
+msgid "Skip to content"
+msgstr ""
+
+#: header.php
+msgid "Primary Navigation"
+msgstr ""
+
+#: header.php
+msgid "Contact Us"
+msgstr ""
+
+#: header.php
+msgid "Open menu"
+msgstr ""
+
+#: header.php
+msgid "Real Estate"
+msgstr ""
+
+#: footer.php
+msgid "The leading name in premium Dutch real estate since 2004. We turn dream houses into your new home."
+msgstr ""
+
+#: footer.php
+msgid "Explore"
+msgstr ""
+
+#: footer.php
+msgid "Footer Navigation"
+msgstr ""
+
+#: footer.php
+msgid "Contact"
+msgstr ""
+
+#: footer.php
+msgid "Office Hours"
+msgstr ""
+
+#: footer.php
+msgid "Mon – Fri"
+msgstr ""
+
+#: footer.php
+msgid "Saturday"
+msgstr ""
+
+#: footer.php
+msgid "Sunday"
+msgstr ""
+
+#: footer.php
+msgid "Closed"
+msgstr ""
+
+#: footer.php
+msgid "Privacy Policy"
+msgstr ""
+
+#. translators: 1: year, 2: site name
+#: footer.php
+msgid "© %1$s %2$s. All rights reserved."
+msgstr ""
+
+#: inc/blocks.php
+msgid "DKS Hero"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Full-width hero section with background image, heading, and CTA buttons. Works on any page."
+msgstr ""
+
+#: inc/blocks.php
+msgid "A NEW <span class=\"accent\">BEGINNING</span> IN YOUR DREAM HOME"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Expert guidance for buying and renting premium properties in the heart of the Netherlands."
+msgstr ""
+
+#: inc/blocks.php
+msgid "View Listings"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Contact Us"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Hero section"
+msgstr ""
+
+#: inc/blocks.php
+msgid "DKS Premium Listings"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Displays a grid of property listings. Defaults to HTML placeholders; a child theme can hook in real CPT data."
+msgstr ""
+
+#: inc/blocks.php
+msgid "Premium Listings"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Selected Collection"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Browse All Properties"
+msgstr ""
+
+#: inc/blocks.php
+msgid "DKS Features"
+msgstr ""
+
+#: inc/blocks.php
+msgid "\"Why Choose DKS\" section with icon feature items."
+msgstr ""
+
+#: inc/blocks.php
+msgid "DKS Distinction"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Why Choose <span class=\"accent\">DKS</span>"
+msgstr ""
+
+#: inc/blocks.php
+msgid "We combine deep local market insights with a commitment to excellence, ensuring your real estate journey is seamless and successful."
+msgstr ""
+
+#: inc/blocks.php
+msgid "DKS Newsletter"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Stay Informed email subscribe section."
+msgstr ""
+
+#: inc/blocks.php
+msgid "Stay <span class=\"accent\">Informed</span>"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Receive exclusive market insights and premium listings directly to your inbox."
+msgstr ""
+
+#: inc/blocks.php
+msgid "Subscribe"
+msgstr ""
+
+#: inc/blocks.php
+msgid "DKS Blocks"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Amsterdam, Prinsengracht District"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Utrecht, Historical Center"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Rotterdam, Kop van Zuid"
+msgstr ""
+
+#: inc/blocks.php
+msgid "Featured"
+msgstr ""
+
+#. translators: %s: listing price
+#: inc/blocks.php
+msgid "View listing: %s"
+msgstr ""
+
+#. translators: singular
+#: inc/blocks.php
+msgid "%d Bed"
+msgstr ""
+
+#. translators: plural
+#: inc/blocks.php
+msgid "%d Beds"
+msgstr ""
+
+#. translators: singular
+#: inc/blocks.php
+msgid "%d Bath"
+msgstr ""
+
+#. translators: plural
+#: inc/blocks.php
+msgid "%d Baths"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "DKS property field: %s"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "DKS Property Details"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Price"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Location"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Amsterdam, Prinsengracht District"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Bedrooms"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Bathrooms"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Floor Area"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Badge Label"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Featured"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Status"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Available"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Sold"
+msgstr ""
+
+#: inc/meta-boxes.php
+msgid "Rented"
+msgstr ""
+
+#: inc/block-filters.php
+msgid "DKS Real Estate"
+msgstr ""
+
+#: inc/block-filters.php
+msgid "DKS Homepage"
+msgstr ""
+
+#: inc/block-filters.php
+msgid "Full homepage layout with hero, listings, features, and newsletter."
+msgstr ""
+
+#: inc/block-filters.php
+msgid "DKS Hero Banner"
+msgstr ""
+
+#: inc/block-filters.php
+msgid "Standalone hero block — use on any page."
+msgstr ""
+
+#: inc/template-tags.php
+msgid "Breadcrumb"
+msgstr ""
+
+#: inc/template-tags.php
+msgid "Home"
+msgstr ""
+
+#: inc/setup.php
+msgid "Primary"
+msgstr ""
+
+#: inc/setup.php
+msgid "Accent"
+msgstr ""
+
+#: inc/setup.php
+msgid "Background Light"
+msgstr ""
+
+#: inc/setup.php
+msgid "Background Dark"
+msgstr ""
+
+#: inc/setup.php
+msgid "Surface"
+msgstr ""
+
+#: inc/setup.php
+msgid "White"
+msgstr ""
+
+#: inc/setup.php
+msgid "Small"
+msgstr ""
+
+#: inc/setup.php
+msgid "Normal"
+msgstr ""
+
+#: inc/setup.php
+msgid "Large"
+msgstr ""
+
+#: inc/setup.php
+msgid "X-Large"
+msgstr ""
+
+#: inc/setup.php
+msgid "Huge"
+msgstr ""
+
+#: inc/setup.php
+msgid "Primary Navigation"
+msgstr ""
+
+#: inc/setup.php
+msgid "Footer Navigation"
+msgstr ""
+
+#: inc/setup.php
+msgid "Mobile Navigation"
+msgstr ""
+
+#: inc/widgets.php
+msgid "Primary Sidebar"
+msgstr ""
+
+#: inc/widgets.php
+msgid "Add widgets here to appear on blog/archive pages."
+msgstr ""
+
+#: inc/widgets.php
+msgid "Footer Widget Area"
+msgstr ""
+
+#: inc/widgets.php
+msgid "Add widgets here to appear in the footer."
+msgstr ""
+
+#: template-parts/content.php
+msgid "Read More"
+msgstr ""
+
+#: template-parts/content-none.php
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/content-none.php
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/content-none.php
+msgid "Sorry, but nothing matched your search terms. Please try again with different keywords."
+msgstr ""
+
+#: template-parts/content-none.php
+msgid "It seems we can't find what you're looking for. Perhaps searching will help."
+msgstr ""

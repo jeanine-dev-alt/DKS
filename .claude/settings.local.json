@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /Applications/MAMP/htdocs/wordpress-local/wp-content -name *.sql -o -name *dump* -o -name *seed* -o -name *demo*)",
+      "Read(//Applications/MAMP/htdocs/wordpress-local/**)",
+      "Bash(wp --info)",
+      "Bash(/Applications/MAMP/bin/php/php8.3.30/bin/php insert-demo-woningen.php)"
+    ]
+  }
+}
