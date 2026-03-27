@@ -78,6 +78,45 @@ if ( ! function_exists( 'dks_numeric_posts_nav' ) ) :
 	}
 endif;
 
+// ── Comment callback ──────────────────────────────────────────────────────
+if ( ! function_exists( 'dks_comment' ) ) :
+	function dks_comment( $comment, $args, $depth ) {
+		$tag = ( 'div' === $args['style'] ) ? 'div' : 'li';
+		?>
+		<<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class( 'dks-comment', $comment ); ?> style="padding:1.5rem 0;border-bottom:1px solid rgba(26,26,26,.08);">
+			<div style="display:flex;gap:1rem;align-items:flex-start;">
+				<div style="flex-shrink:0;">
+					<?php echo get_avatar( $comment, 48, '', '', [ 'style' => 'border-radius:50%;display:block;' ] ); ?>
+				</div>
+				<div style="flex:1;min-width:0;">
+					<div style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:rgba(26,26,26,.5);margin-bottom:.4rem;">
+						<?php comment_author_link( $comment ); ?>
+						&mdash;
+						<time datetime="<?php comment_time( 'c' ); ?>"><?php comment_date(); ?></time>
+						<?php edit_comment_link( __( '(bewerk)', 'dks-theme' ), ' ', '' ); ?>
+					</div>
+					<?php if ( '0' === $comment->comment_approved ) : ?>
+						<p style="font-size:.75rem;color:rgba(26,26,26,.4);font-style:italic;"><?php esc_html_e( 'Je reactie wacht op goedkeuring.', 'dks-theme' ); ?></p>
+					<?php endif; ?>
+					<div class="comment-content entry-content" style="padding-inline:0;">
+						<?php comment_text(); ?>
+					</div>
+					<?php
+					comment_reply_link( array_merge( $args, [
+						'add_below' => 'comment',
+						'depth'     => $depth,
+						'max_depth' => $args['max_depth'],
+						'before'    => '<div style="margin-top:.5rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;">',
+						'after'     => '</div>',
+					] ) );
+					?>
+				</div>
+			</div>
+		</<?php echo $tag; ?>>
+		<?php
+	}
+endif;
+
 // ── Breadcrumbs (simple, no external dependency) ──────────────────────────
 if ( ! function_exists( 'dks_breadcrumbs' ) ) :
 	function dks_breadcrumbs() {

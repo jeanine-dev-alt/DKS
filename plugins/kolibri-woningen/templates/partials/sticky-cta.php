@@ -63,7 +63,11 @@ $phone_clean = preg_replace( '/[^0-9+]/', '', $agent_phone );
 
 		if ( ! empty( trim( $bezichtiging_shortcode ) ) ) :
 			// Use the CF7 shortcode configured in Appearance → Customizer → Forms.
-			echo do_shortcode( $bezichtiging_shortcode ); // phpcs:ignore WordPress.Security.EscapeOutput
+			?>
+			<div class="dks-form-wrap" style="max-width:100%;">
+				<?php echo do_shortcode( $bezichtiging_shortcode ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+			</div>
+			<?php
 		else :
 			// Fallback: built-in contact form.
 			?>

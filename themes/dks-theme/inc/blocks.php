@@ -73,7 +73,7 @@ if ( ! function_exists( 'dks_register_blocks' ) ) :
 				'title'         => [ 'type' => 'string', 'default' => 'Premium Listings' ],
 				'eyebrow'       => [ 'type' => 'string', 'default' => 'Selected Collection' ],
 				'browseText'    => [ 'type' => 'string', 'default' => 'Browse All Properties' ],
-				'browseUrl'     => [ 'type' => 'string', 'default' => '#' ],
+				'browseUrl'     => [ 'type' => 'string', 'default' => '' ],
 				'columns'       => [ 'type' => 'number', 'default' => 3 ],
 				'cards'         => [
 					'type'    => 'array',
@@ -451,98 +451,7 @@ if ( ! function_exists( 'dks_render_hero_block' ) ) :
 		<div class="dks-hero-search" role="search">
 			<div class="dks-container">
 				<div class="dks-hero-search__wrap">
-					<form class="dks-hero-search__form" method="get" action="<?php echo esc_url( get_post_type_archive_link( 'kolibri_woning' ) ?: home_url( '/properties/' ) ); ?>">
-
-						<!-- Stad -->
-						<div class="dks-hero-search__field dks-hero-search__field--city">
-							<label class="dks-hero-search__label" for="hs-stad"><?php esc_html_e( 'Stad', 'dks-theme' ); ?></label>
-							<div class="dks-hero-search__input-row">
-								<svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="dks-hero-search__icon"><path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.979-5.121 3.979-8.827a8.25 8.25 0 00-16.5 0c0 3.706 2.035 6.744 3.979 8.827a19.58 19.58 0 002.686 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
-								<input
-									id="hs-stad"
-									type="text"
-									name="stad"
-									class="dks-hero-search__input"
-									placeholder="<?php esc_attr_e( 'Amsterdam, Rotterdamâ¦', 'dks-theme' ); ?>"
-									autocomplete="off"
-								>
-							</div>
-						</div>
-
-						<div class="dks-hero-search__sep" aria-hidden="true"></div>
-
-						<!-- Min. prijs -->
-						<div class="dks-hero-search__field">
-							<label class="dks-hero-search__label" for="hs-min-prijs"><?php esc_html_e( 'Min. prijs', 'dks-theme' ); ?></label>
-							<select id="hs-min-prijs" name="min_prijs" class="dks-hero-search__select">
-								<option value=""><?php esc_html_e( 'Geen minimum', 'dks-theme' ); ?></option>
-								<option value="100000">&euro;&nbsp;100.000</option>
-								<option value="200000">&euro;&nbsp;200.000</option>
-								<option value="300000">&euro;&nbsp;300.000</option>
-								<option value="400000">&euro;&nbsp;400.000</option>
-								<option value="500000">&euro;&nbsp;500.000</option>
-								<option value="750000">&euro;&nbsp;750.000</option>
-								<option value="1000000">&euro;&nbsp;1.000.000</option>
-								<option value="1500000">&euro;&nbsp;1.500.000</option>
-							</select>
-						</div>
-
-						<div class="dks-hero-search__sep" aria-hidden="true"></div>
-
-						<!-- Max. prijs -->
-						<div class="dks-hero-search__field">
-							<label class="dks-hero-search__label" for="hs-max-prijs"><?php esc_html_e( 'Max. prijs', 'dks-theme' ); ?></label>
-							<select id="hs-max-prijs" name="max_prijs" class="dks-hero-search__select">
-								<option value=""><?php esc_html_e( 'Geen maximum', 'dks-theme' ); ?></option>
-								<option value="200000">&euro;&nbsp;200.000</option>
-								<option value="300000">&euro;&nbsp;300.000</option>
-								<option value="400000">&euro;&nbsp;400.000</option>
-								<option value="500000">&euro;&nbsp;500.000</option>
-								<option value="750000">&euro;&nbsp;750.000</option>
-								<option value="1000000">&euro;&nbsp;1.000.000</option>
-								<option value="1500000">&euro;&nbsp;1.500.000</option>
-								<option value="2000000">&euro;&nbsp;2.000.000</option>
-							</select>
-						</div>
-
-						<div class="dks-hero-search__sep" aria-hidden="true"></div>
-
-						<!-- Slaapkamers -->
-						<div class="dks-hero-search__field">
-							<label class="dks-hero-search__label" for="hs-kamers"><?php esc_html_e( 'Slaapkamers', 'dks-theme' ); ?></label>
-							<select id="hs-kamers" name="kamers" class="dks-hero-search__select">
-								<option value=""><?php esc_html_e( 'Alle', 'dks-theme' ); ?></option>
-								<option value="1">1+</option>
-								<option value="2">2+</option>
-								<option value="3">3+</option>
-								<option value="4">4+</option>
-								<option value="5">5+</option>
-							</select>
-						</div>
-
-						<div class="dks-hero-search__sep" aria-hidden="true"></div>
-
-						<!-- Min. m² -->
-						<div class="dks-hero-search__field">
-							<label class="dks-hero-search__label" for="hs-m2">m&sup2;</label>
-							<select id="hs-m2" name="min_m2" class="dks-hero-search__select">
-								<option value=""><?php esc_html_e( 'Alle', 'dks-theme' ); ?></option>
-								<option value="50">50+ m&sup2;</option>
-								<option value="75">75+ m&sup2;</option>
-								<option value="100">100+ m&sup2;</option>
-								<option value="125">125+ m&sup2;</option>
-								<option value="150">150+ m&sup2;</option>
-								<option value="200">200+ m&sup2;</option>
-								<option value="250">250+ m&sup2;</option>
-							</select>
-						</div>
-
-						<!-- Find My Home knop -->
-						<button type="submit" class="dks-hero-search__btn">
-							<?php esc_html_e( 'Find My Home', 'dks-theme' ); ?>
-						</button>
-
-					</form>
+					<?php include get_theme_file_path( 'template-parts/search-filters.php' ); ?>
 				</div><!-- .dks-hero-search__wrap -->
 			</div><!-- .dks-container -->
 		</div><!-- .dks-hero-search -->
@@ -559,7 +468,8 @@ if ( ! function_exists( 'dks_render_listings_block' ) ) :
 		$title      = esc_html( $attributes['title']      ?? 'Premium Listings' );
 		$eyebrow    = esc_html( $attributes['eyebrow']    ?? 'Selected Collection' );
 		$browse_txt = esc_html( $attributes['browseText'] ?? 'Browse All Properties' );
-		$browse_url = esc_url(  $attributes['browseUrl']  ?? '#' );
+		$raw_browse = $attributes['browseUrl'] ?? '';
+		$browse_url = esc_url( ( $raw_browse && '#' !== $raw_browse ) ? $raw_browse : home_url( '/?post_type=kolibri_woning' ) );
 		$columns    = absint(   $attributes['columns']    ?? 3 );
 
 		// Gebruik kaarten uit de editor als die er zijn, anders de filter/placeholder
@@ -1177,5 +1087,126 @@ if ( ! function_exists( 'dks_svg_icon' ) ) :
 		];
 		$svg = $icons[ $icon ] ?? $icons['star'];
 		return apply_filters( 'dks_svg_icon', $svg, $icon );
+	}
+endif;
+
+// ── AJAX: Laad meer woningen ────────────────────────────────────────────────
+
+add_action( 'wp_ajax_dks_laad_meer',        'dks_ajax_laad_meer' );
+add_action( 'wp_ajax_nopriv_dks_laad_meer', 'dks_ajax_laad_meer' );
+
+if ( ! function_exists( 'dks_ajax_laad_meer' ) ) :
+	function dks_ajax_laad_meer() {
+		if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ?? '' ) ), 'dks_nonce' ) ) {
+			wp_send_json_error( [ 'message' => 'Ongeldig beveiligingstoken.' ] );
+		}
+
+		if ( ! class_exists( 'KolibriWoningen\\Query' ) || ! class_exists( 'KolibriWoningen\\Post_Types' ) ) {
+			wp_send_json_error( [ 'message' => 'Plugin not active.' ] );
+		}
+
+		$filters = [
+			'stad'      => sanitize_text_field( wp_unslash( $_POST['stad']      ?? '' ) ),
+			'min_prijs' => absint( $_POST['min_prijs'] ?? 0 ),
+			'max_prijs' => absint( $_POST['max_prijs'] ?? 0 ),
+			'kamers'    => absint( $_POST['kamers']    ?? 0 ),
+			'min_m2'    => absint( $_POST['min_m2']    ?? 0 ),
+			'per_page'  => 9,
+			'paged'     => max( 1, absint( $_POST['paged'] ?? 2 ) ),
+		];
+
+		$woningen = KolibriWoningen\Query::get_woningen(
+			array_filter( $filters ) + [ 'per_page' => 9, 'paged' => $filters['paged'] ]
+		);
+
+		ob_start();
+		if ( $woningen->have_posts() ) :
+			while ( $woningen->have_posts() ) :
+				$woningen->the_post();
+				$post_id     = get_the_ID();
+				$straat      = KolibriWoningen\Post_Types::get_meta( $post_id, 'straat' );
+				$huisnummer  = KolibriWoningen\Post_Types::get_meta( $post_id, 'huisnummer' );
+				$toevoeging  = KolibriWoningen\Post_Types::get_meta( $post_id, 'toevoeging' );
+				$stad        = KolibriWoningen\Post_Types::get_meta( $post_id, 'stad' );
+				$wijk        = KolibriWoningen\Post_Types::get_meta( $post_id, 'wijk' );
+				$koopprijs   = KolibriWoningen\Post_Types::get_meta( $post_id, 'koopprijs' );
+				$huurprijs   = KolibriWoningen\Post_Types::get_meta( $post_id, 'huurprijs' );
+				$prijs_tekst = KolibriWoningen\Post_Types::get_meta( $post_id, 'prijs_tekst' );
+				$woon_m2     = KolibriWoningen\Post_Types::get_meta( $post_id, 'woon_m2' );
+				$slaapkamers = KolibriWoningen\Post_Types::get_meta( $post_id, 'slaapkamers' );
+				$badkamers   = KolibriWoningen\Post_Types::get_meta( $post_id, 'badkamers' );
+				$uitgelicht  = KolibriWoningen\Post_Types::get_meta( $post_id, 'uitgelicht' );
+
+				$adres    = trim( $straat . ' ' . $huisnummer . $toevoeging );
+				$location = $wijk ? $stad . ', ' . $wijk : $stad;
+
+				$prijs_label = $koopprijs
+					? KolibriWoningen\Post_Types::format_price( $koopprijs ) . ( $prijs_tekst ? ' ' . $prijs_tekst : '' )
+					: ( $huurprijs ? KolibriWoningen\Post_Types::format_price( $huurprijs ) . ' /mnd' : '' );
+
+				$badge     = ( '1' === $uitgelicht ) ? esc_html__( 'Uitgelicht', 'kolibri-woningen' ) : '';
+				$permalink = esc_url( get_permalink( $post_id ) );
+				?>
+				<article class="dks-property-card">
+					<a href="<?php echo $permalink; ?>" class="dks-property-card__image-wrap">
+						<?php echo KolibriWoningen\Post_Types::render_card_slides( $post_id, 'dks-property-card' ); // phpcs:ignore WordPress.Security.EscapeOutput ?>
+						<?php if ( $badge ) : ?>
+							<span class="dks-property-card__badge"><?php echo esc_html( $badge ); ?></span>
+						<?php endif; ?>
+					</a>
+					<div class="dks-property-card__info">
+						<h3 class="dks-property-card__price">
+							<a href="<?php echo $permalink; ?>"><?php echo esc_html( $prijs_label ); ?></a>
+						</h3>
+						<?php if ( $adres ) : ?>
+							<p class="dks-property-card__address"><?php echo esc_html( $adres ); ?></p>
+						<?php endif; ?>
+						<?php if ( $location ) : ?>
+							<p class="dks-property-card__location">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true">
+									<path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-2.083 3.979-5.121 3.979-8.827a8.25 8.25 0 00-16.5 0c0 3.706 2.035 6.744 3.979 8.827a19.58 19.58 0 002.686 2.282 16.975 16.975 0 001.144.742zM12 13.5a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+								</svg>
+								<?php echo esc_html( $location ); ?>
+							</p>
+						<?php endif; ?>
+						<div class="dks-property-card__meta">
+							<?php if ( $slaapkamers ) : ?>
+								<div class="dks-property-card__meta-item">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
+									</svg>
+									<?php echo esc_html( sprintf( _n( '%d Bedroom', '%d Bedrooms', (int) $slaapkamers, 'dks-theme' ), (int) $slaapkamers ) ); ?>
+								</div>
+							<?php endif; ?>
+							<?php if ( $badkamers ) : ?>
+								<div class="dks-property-card__meta-item">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a6 6 0 0112 0v1H6v-1z"/>
+									</svg>
+									<?php echo esc_html( sprintf( _n( '%d Bathroom', '%d Bathrooms', (int) $badkamers, 'dks-theme' ), (int) $badkamers ) ); ?>
+								</div>
+							<?php endif; ?>
+							<?php if ( $woon_m2 ) : ?>
+								<div class="dks-property-card__meta-item">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15"/>
+									</svg>
+									<?php echo esc_html( $woon_m2 ); ?> m²
+								</div>
+							<?php endif; ?>
+						</div>
+					</div>
+				</article>
+				<?php
+			endwhile;
+			wp_reset_postdata();
+		endif;
+		$html = ob_get_clean();
+
+		wp_send_json_success( [
+			'html'      => $html,
+			'max_pages' => (int) $woningen->max_num_pages,
+			'paged'     => (int) $filters['paged'],
+		] );
 	}
 endif;

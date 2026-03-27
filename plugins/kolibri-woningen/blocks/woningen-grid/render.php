@@ -26,7 +26,8 @@ $selected   = array_filter( array_map( 'absint', $attributes['selectedIds'] ?? [
 $title      = sanitize_text_field( $attributes['title']      ?? '' );
 $eyebrow    = sanitize_text_field( $attributes['eyebrow']    ?? '' );
 $browse_txt = sanitize_text_field( $attributes['browseText'] ?? '' );
-$browse_url = esc_url( $attributes['browseUrl'] ?? '' );
+$raw_browse_url = $attributes['browseUrl'] ?? '';
+$browse_url     = esc_url( ( $raw_browse_url && strpos( $raw_browse_url, 'post_type' ) !== false ) ? $raw_browse_url : home_url( '/?post_type=kolibri_woning' ) );
 
 // ── Query ──────────────────────────────────────────────────────────────────────
 

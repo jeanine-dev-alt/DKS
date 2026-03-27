@@ -39,11 +39,10 @@ class Query {
 			'order'          => strtoupper( $filters['order'] ?? 'DESC' ) === 'ASC' ? 'ASC' : 'DESC',
 		];
 
-		// Taxonomy filters.
+		// Taxonomy filters (type, status, energie — not stad, which uses meta search).
 		$tax_query = [];
 		$tax_map   = [
 			'type'    => 'kolibri_type',
-			'stad'    => 'kolibri_stad',
 			'status'  => 'kolibri_status',
 			'energie' => 'kolibri_energie',
 		];
@@ -67,6 +66,27 @@ class Query {
 
 		// Meta filters.
 		$meta_query = [];
+
+		// Stad: free-text LIKE search across city, street, neighbourhood and postcode.
+		// Direct query avoids WordPress meta_query double-escaping the % wildcards.
+		if ( ! empty( $filters['stad'] ) ) {
+			global $wpdb;
+			$like = '%' . $wpdb->esc_like( sanitize_text_field( $filters['stad'] ) ) . '%';
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$stad_ids = $wpdb->get_col(
+				$wpdb->prepare(
+					"SELECT DISTINCT pm.post_id
+					FROM {$wpdb->postmeta} pm
+					INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+					WHERE p.post_type = 'kolibri_woning'
+					  AND p.post_status = 'publish'
+					  AND pm.meta_key IN ('_kolibri_stad','_kolibri_straat','_kolibri_wijk','_kolibri_postcode')
+					  AND pm.meta_value LIKE %s",
+					$like
+				)
+			);
+			$args['post__in'] = ! empty( $stad_ids ) ? array_map( 'intval', $stad_ids ) : [ 0 ];
+		}
 
 		if ( ! empty( $filters['min_prijs'] ) ) {
 			$meta_query[] = [
@@ -92,9 +112,10 @@ class Query {
 				'type'    => 'NUMERIC',
 			];
 		}
+		// Slaapkamers: filter on bedrooms (>=), so "2+" shows 2, 3, 4 etc.
 		if ( ! empty( $filters['kamers'] ) ) {
 			$meta_query[] = [
-				'key'     => '_kolibri_kamers',
+				'key'     => '_kolibri_slaapkamers',
 				'value'   => (int) $filters['kamers'],
 				'compare' => '>=',
 				'type'    => 'NUMERIC',

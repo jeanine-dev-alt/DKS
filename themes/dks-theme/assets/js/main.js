@@ -133,19 +133,18 @@
 
 		if ( ! targets.length ) return;
 
-		// Set initial hidden state
+		// Set initial hidden state — opacity only, no transform (transform shifts cards
+		// out of their grid position and causes rows to visually overlap each other).
 		targets.forEach( function ( el, i ) {
 			el.style.opacity    = '0';
-			el.style.transform  = 'translateY(24px)';
-			el.style.transition = 'opacity 0.6s ease ' + ( i % 3 ) * 0.1 + 's, transform 0.6s ease ' + ( i % 3 ) * 0.1 + 's';
+			el.style.transition = 'opacity 0.6s ease ' + ( i % 3 ) * 0.1 + 's';
 		} );
 
 		const observer = new IntersectionObserver(
 			function ( entries ) {
 				entries.forEach( function ( entry ) {
 					if ( entry.isIntersecting ) {
-						entry.target.style.opacity   = '1';
-						entry.target.style.transform = 'translateY(0)';
+						entry.target.style.opacity = '1';
 						observer.unobserve( entry.target );
 					}
 				} );
@@ -243,7 +242,76 @@
 	}
 
 	/* ────────────────────────────────────────────────────────────────────
-	 * 9. Bootstrap all
+	 * 9. Laad meer woningen — AJAX load-more button on archive page
+	 * ──────────────────────────────────────────────────────────────────── */
+	function initLaadMeer() {
+		const btn  = document.getElementById( 'dks-laad-meer' );
+		const grid = document.getElementById( 'dks-overzicht-grid' );
+
+		if ( ! btn || ! grid ) return;
+		if ( typeof dksTheme === 'undefined' ) return;
+
+		btn.addEventListener( 'click', function () {
+			const paged     = parseInt( btn.dataset.paged, 10 );
+			const maxPages  = parseInt( btn.dataset.maxPages, 10 );
+
+			btn.disabled    = true;
+			btn.textContent = 'Laden\u2026';
+
+			const body = new FormData();
+			body.append( 'action',    'dks_laad_meer' );
+			body.append( 'nonce',     dksTheme.nonce );
+			body.append( 'paged',     paged );
+			body.append( 'stad',      btn.dataset.stad      || '' );
+			body.append( 'min_prijs', btn.dataset.minPrijs  || 0 );
+			body.append( 'max_prijs', btn.dataset.maxPrijs  || 0 );
+			body.append( 'kamers',    btn.dataset.kamers    || 0 );
+			body.append( 'min_m2',    btn.dataset.minM2     || 0 );
+
+			fetch( dksTheme.ajaxUrl, {
+				method:      'POST',
+				credentials: 'same-origin',
+				body:        body,
+			} )
+				.then( function ( r ) { return r.json(); } )
+				.then( function ( json ) {
+					if ( ! json.success ) {
+						btn.disabled    = false;
+						btn.textContent = 'Laad meer woningen';
+						return;
+					}
+
+					// Append new cards to grid.
+					const tmp = document.createElement( 'div' );
+					tmp.innerHTML = json.data.html;
+					while ( tmp.firstChild ) {
+						grid.appendChild( tmp.firstChild );
+					}
+
+					// Re-init sliders for newly added cards (exposed by plugin's frontend.js).
+					if ( typeof window.kolibriInitSliders === 'function' ) {
+						window.kolibriInitSliders( grid );
+					}
+
+					// Advance page counter or hide button when all pages loaded.
+					const nextPage = paged + 1;
+					if ( nextPage > maxPages ) {
+						btn.closest( '.dks-laad-meer-wrap' ).remove();
+					} else {
+						btn.dataset.paged = nextPage;
+						btn.disabled      = false;
+						btn.textContent   = 'Laad meer woningen';
+					}
+				} )
+				.catch( function () {
+					btn.disabled    = false;
+					btn.textContent = 'Laad meer woningen';
+				} );
+		} );
+	}
+
+	/* ────────────────────────────────────────────────────────────────────
+	 * 10. Bootstrap all
 	 * ──────────────────────────────────────────────────────────────────── */
 	ready( function () {
 		initMobileMenu();
@@ -253,6 +321,7 @@
 		initRevealOnScroll();
 		initNewsletterForm();
 		initFaqAccordion();
+		initLaadMeer();
 	} );
 
 } )();

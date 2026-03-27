@@ -44,7 +44,7 @@
 		},
 		"browseUrl": {
 			"type": "string",
-			"default": "/properties/"
+			"default": ""
 		}
 	},
 	"render": "file:./render.php",

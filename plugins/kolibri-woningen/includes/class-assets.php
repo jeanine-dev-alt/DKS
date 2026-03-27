@@ -89,7 +89,6 @@ class Assets {
 	private static function is_kolibri_page(): bool {
 		return is_singular( 'kolibri_woning' )
 			|| is_post_type_archive( 'kolibri_woning' )
-			|| is_tax( [ 'kolibri_type', 'kolibri_status', 'kolibri_stad', 'kolibri_energie' ] )
-			|| is_page_template( 'page-woning-overzicht.php' );
+			|| is_tax( [ 'kolibri_type', 'kolibri_status', 'kolibri_stad', 'kolibri_energie' ] );
 	}
 }

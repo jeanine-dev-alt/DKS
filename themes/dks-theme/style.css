@@ -822,6 +822,7 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
+    align-items: start;
 }
 
 @media (min-width: 640px) {
@@ -834,7 +835,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Property Card */
-.dks-property-card {}
+.dks-property-card {
+    /* transform: translateZ(0) creates a GPU compositing layer for this card,
+       which contains the slider's GPU layer so it cannot paint outside card bounds. */
+    transform: translateZ(0);
+}
 
 .dks-property-card__image-wrap {
     position: relative;
@@ -876,6 +881,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: clamp(1.4rem, 3vw, 1.8rem);
     font-weight: 700;
     letter-spacing: -0.02em;
+    margin-top: 10px;
     margin-bottom: 0.4rem;
 }
 
@@ -1512,6 +1518,7 @@ h1, h2, h3, h4, h5, h6 {
 	background: var(--dks-color-white);
 	border: 1px solid rgba(26, 26, 26, 0.06);
 	transition: var(--dks-transition);
+	position: relative;
 }
 
 .dks-post-card:hover {
@@ -1579,8 +1586,22 @@ h1, h2, h3, h4, h5, h6 {
 	transition: var(--dks-transition);
 }
 
+/* Stretch the title link over the entire card */
+.dks-post-card__title a::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+}
+
 .dks-post-card__title a:hover {
 	color: var(--dks-color-accent);
+}
+
+/* Keep category links and read-more clickable above the stretched title link */
+.dks-post-card__cat,
+.dks-post-card__read-more {
+	position: relative;
+	z-index: 1;
 }
 
 .dks-post-card__meta {
@@ -2574,6 +2595,20 @@ a.dks-contact-details__value:hover { color: var(--dks-color-hover); }
 .dks-form-wrap input[type="submit"]:hover,
 .dks-form-wrap button[type="submit"]:hover {
     background-color: var(--dks-color-hover);
+}
+
+/* Compact form inputs inside the property detail sidebar CTA */
+.kolibri-sticky-cta .dks-form-wrap input[type="text"],
+.kolibri-sticky-cta .dks-form-wrap input[type="email"],
+.kolibri-sticky-cta .dks-form-wrap input[type="tel"] {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.kolibri-sticky-cta .dks-form-wrap textarea {
+    min-height: 90px;
+    max-height: 90px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 /* WordPress built-in search form inside .dks-form-wrap */

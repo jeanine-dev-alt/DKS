@@ -176,6 +176,9 @@
 			initAllSliders( resultsEl );
 		} ).observe( resultsEl, { childList: true, subtree: true } );
 	}
+
+	// Expose globally so other scripts (e.g. theme laad-meer) can re-init sliders.
+	window.kolibriInitSliders = initAllSliders;
 } )();
 
 // ── Contact form (sticky CTA) ────────────────────────────────────────────────

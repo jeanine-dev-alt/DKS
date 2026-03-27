@@ -2,10 +2,6 @@
 	"$schema": "https://schemas.wp.org/trunk/theme.json",
 	"version": 2,
 	"settings": {
-		"layout": {
-			"contentSize": "760px",
-			"wideSize": "1280px"
-		},
 		"color": {
 			"palette": [
 				{ "slug": "primary",           "color": "#1A1A1A", "name": "Primary" },

@@ -350,7 +350,7 @@
 			title:      { type: 'string', default: 'Premium Listings' },
 			eyebrow:    { type: 'string', default: 'Selected Collection' },
 			browseText: { type: 'string', default: 'Browse All Properties' },
-			browseUrl:  { type: 'string', default: '#' },
+			browseUrl:  { type: 'string', default: '' },
 			columns:    { type: 'number', default: 3 },
 			cards: {
 				type:    'array',
